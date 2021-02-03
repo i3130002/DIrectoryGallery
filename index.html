@@ -1,0 +1,50 @@
+
+<body>
+</body>
+<script>
+var url = "https://i3130002.github.io/DIrectoryGallery/images/";
+function ImageExist(url) 
+{
+   var img = new Image();
+   img.src = url;
+   return img.height != 0;
+}
+function fileExists(url) {
+    if(url){
+        var req = new XMLHttpRequest();
+        req.open('GET', url, false);
+        req.send();
+        return req.status==200;
+    } else {
+        return false;
+    }
+}
+
+function findValidImage(){
+var result = new Date();
+    var validDate = false;
+    var maxRetries = 5;
+    while (false== validDate && maxRetries>0){
+        console.log(result.toISOString().slice(0, 10));
+        _date = result.toISOString().slice(0, 10);
+        if (fileExists(url+_date+".jpg")){
+            console.log(url+_date+".jpg");
+            return(url+_date+".jpg")
+        }
+        result.setDate(result.getDate() - 1)
+        maxRetries -=1
+    }
+    return(url+"NotFound.jpg")
+}
+
+function findAndLoadLastImage(){
+    var validURL = findValidImage();
+
+    var outputImg = document.createElement('img');
+    outputImg.src = validURL;
+    document.body.appendChild(outputImg);
+}
+
+//alert(fileExists("https://i3130002.github.io/DIrectoryGallery/images/1.png"))
+findAndLoadLastImage();
+</script>
