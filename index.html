@@ -1,5 +1,6 @@
 
-<body>
+<body style="background-color:black">
+
 </body>
 <script>
 var url = "https://i3130002.github.io/DIrectoryGallery/images/";
@@ -42,6 +43,7 @@ function findAndLoadLastImage(){
 
     var outputImg = document.createElement('img');
     outputImg.src = validURL;
+    outputImg.style= "width: 100%;    height: 100%;object-fit: scale-down;    overflow: hidden;"
     document.body.appendChild(outputImg);
 }
 
